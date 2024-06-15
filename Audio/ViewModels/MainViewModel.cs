@@ -166,6 +166,15 @@ public partial class MainViewModel : ViewModelBase
             ConfigManager.Instance.Save();
         }
     }
+    public string PythonPath
+    {
+        get => !string.IsNullOrEmpty(ConfigManager.Instance.PythonPath) ? ConfigManager.Instance.PythonPath : "python";
+        set
+        {
+            ConfigManager.Instance.PythonPath = value;
+            ConfigManager.Instance.Save();
+        }
+    }
     public MainViewModel()
     {
         ConfigManager.Instance.Load();
@@ -645,7 +654,7 @@ public partial class MainViewModel : ViewModelBase
                 Directory.CreateDirectory(Path.GetDirectoryName(txtpDir));
 
                 var startInfo = new ProcessStartInfo();
-                startInfo.FileName = "python";
+                startInfo.FileName = PythonPath;
                 startInfo.ArgumentList.Add(WWiserPath);
                 startInfo.ArgumentList.Add(Path.Combine(banksDir, "**/*.bnk"));
                 startInfo.ArgumentList.Add("-g");
@@ -683,9 +692,9 @@ public partial class MainViewModel : ViewModelBase
             var txtpDir = Path.Combine(outputDir, "txtp");
 
             var startInfo = new ProcessStartInfo();
-            startInfo.FileName = "python";
+            startInfo.FileName = PythonPath;
             startInfo.ArgumentList.Add(WWiserPath);
-            startInfo.ArgumentList.Add(Path.Combine(banksDir, "**/*.bnk"));
+            startInfo.ArgumentList.Add($"'{Path.Combine(banksDir, "**/*.bnk")}'");
             startInfo.ArgumentList.Add("-g");
             startInfo.ArgumentList.Add("-te");
             if (!AllowBanks)

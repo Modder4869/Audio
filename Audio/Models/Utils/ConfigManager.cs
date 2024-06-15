@@ -13,6 +13,7 @@ public class ConfigManager
     public string EventPath { get; set; }
     public string WWiserPath { get; set; }
     public string VGMStreamPath { get; set; }
+    public string PythonPath { get; set; }
     public void Load()
     {
         try
@@ -28,6 +29,7 @@ public class ConfigManager
             EventPath = clone.EventPath;
             WWiserPath = clone.WWiserPath;
             VGMStreamPath = clone.VGMStreamPath;
+            PythonPath = clone.PythonPath;
         }
         catch (Exception) { }
     }

@@ -50,6 +50,7 @@
 			  <MenuItem Header="Set Event Path" Click="SetEventPath_Click"/>
 			  <MenuItem Header="Set WWiser Path" Click="SetWWiserPath_Click"/>
 			  <MenuItem Header="Set VGMStream Path" Click="SetVGMStreamPath_Click"/>
+			  <MenuItem Header="Set Python Path" Click="SetPythonPath_Click"/>
 			  <Separator/>
 			  <MenuItem Header="Load VO" Click="LoadVO_Click"/>
 			  <MenuItem Header="Generate TXTP" Click="GenerateTXTP_Click"/>

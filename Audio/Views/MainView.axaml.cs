@@ -180,6 +180,10 @@ public partial class MainView : ReactiveUserControl<MainViewModel>
     {
         ViewModel.VGMStreamPath = await PickFile([new FilePickerFileType("vgmstream") { Patterns = new[] { "*.*" }}]);
     }
+    private async void SetPythonPath_Click(object? sender, RoutedEventArgs e)
+    {
+        ViewModel.PythonPath = await PickFile([new FilePickerFileType("python.exe") { Patterns = new[] { "python.exe" } }]);
+    }
     private async void ExportAudios_Click(object? sender, RoutedEventArgs e)
     {
         var folder = await PickFolder("Select Output Folder");
