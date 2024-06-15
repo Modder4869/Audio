@@ -786,15 +786,10 @@ public partial class MainViewModel : ViewModelBase
             }
         }
     }
+
     private void DumpInfoInternal(string output)
     {
-        var options = new JsonSerializerOptions
-        {
-            ReferenceHandler = ReferenceHandler.IgnoreCycles,
-            WriteIndented = true
-        };
-        options.Converters.Add(new JsonStringEnumConverter());
-        var str = JsonSerializer.Serialize(Entries.Items, options);
+        var str = JsonSerializer.Serialize(Entries.Items, EntryContext.Default.IEnumerableEntry);
 
         File.WriteAllText(output, str);
 
